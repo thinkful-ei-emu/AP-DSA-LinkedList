@@ -147,23 +147,58 @@ function display(list){
     console.log(arr)
 }
 
+function size(list){
+
+    if(list.head === null){
+        console.log('This list is currently empty');;
+    }
+
+    else{
+        let currNode = list.head
+
+        let size = 0
+
+        while(currNode){
+            currNode = currNode.next
+            size++
+        }
+
+        console.log(size);
+    }
+}
+
+function isEmpty(list){
+
+    if(list.head === null){
+        console.log(`Empty: Yes`);;
+    }
+
+    else{
+        console.log(`Empty: No`)
+    }
+}
+
 function main(){
 
     let SLL = new LinkedList()
 
-    SLL.insertFirst('Apollo')
-    SLL.insertLast('Boomer')
-    SLL.insertLast('Helo')
-    SLL.insertLast('Husker')
-    SLL.insertLast('Starbuck')
-    SLL.insertLast('Tauhida')
-    SLL.remove('squirrel')
+    // SLL.insertFirst('Apollo')
+    // SLL.insertLast('Boomer')
+    // SLL.insertLast('Helo')
+    // SLL.insertLast('Husker')
+    // SLL.insertLast('Starbuck')
+    //SLL.insertLast('Tauhida')
+    // SLL.remove('squirrel')
     //SLL.insertBefore('Athena', 1)
-    // SLL.insertAfter('Hotdog', 3)
+    //SLL.insertAfter('Hotdog', 3)
     //SLL.insertAt('Kat', 3)
-    SLL.remove("Tauhida")
+    //SLL.remove("Tauhida")
 
     display(SLL)
+
+    size(SLL)
+
+    isEmpty(SLL)
 }
 
 main()
