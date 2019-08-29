@@ -130,7 +130,7 @@ class LinkedList {
 
 function display(list){
 
-    // console.log(list.head)
+    //console.log(list.head)
 
     let currNode = list.head
 
@@ -205,16 +205,43 @@ function findLast(list){
 
 }
 
+function findPrevious(list, item){
+
+    if(list.head === null){
+        console.log('This list is currently empty');;
+    }
+
+    else{
+
+        let currNode = list.head
+
+        let previousNode;
+
+        while(currNode.value !== item){
+            
+
+            previousNode = currNode
+            currNode = currNode.next
+
+            // console.log(previousNode)
+            // console.log(currNode)
+        }
+
+        console.log(`Previous Node before ${item} is ${previousNode.value}`)
+
+    }
+}
+
 function main(){
 
     let SLL = new LinkedList()
 
-    //SLL.insertFirst('Apollo')
-    //SLL.insertLast('Boomer')
-    // SLL.insertLast('Helo')
-    // SLL.insertLast('Husker')
-    // SLL.insertLast('Starbuck')
-    //SLL.insertLast('Tauhida')
+    SLL.insertFirst('Apollo')
+    SLL.insertLast('Boomer')
+    SLL.insertLast('Helo')
+    SLL.insertLast('Husker')
+    SLL.insertLast('Starbuck')
+    SLL.insertLast('Tauhida')
     // SLL.remove('squirrel')
     //SLL.insertBefore('Athena', 1)
     //SLL.insertAfter('Hotdog', 3)
@@ -227,7 +254,9 @@ function main(){
 
     //isEmpty(SLL)
 
-    findLast(SLL)
+    //findLast(SLL)
+
+    findPrevious(SLL, 'Husker')
 }
 
 main()
