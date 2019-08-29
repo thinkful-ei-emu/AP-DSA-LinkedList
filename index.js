@@ -272,24 +272,149 @@ function main(){
     SLL.insertLast('Husker')
     SLL.insertLast('Starbuck')
     SLL.insertLast('Tauhida')
-    SLL.remove('squirrel')
+    //SLL.remove('squirrel')
     SLL.insertBefore('Athena', 'Boomer')
     SLL.insertAfter('Hotdog', 'Helo')
     SLL.insertAt('Kat', 3)
-    SLL.remove("Tauhida")
+    //SLL.remove("Tauhida")
+    SLL.insertLast('Starbuck')
 
     display(SLL)
 
-    size(SLL)
+    //size(SLL)
 
-    isEmpty(SLL)
+    //isEmpty(SLL)
 
-    findLast(SLL)
+    //findLast(SLL)
 
-    findPrevious(SLL, 'Husker')
+    //findPrevious(SLL, 'Husker')
+
+    //console.log(reverse(SLL))
+
+    //console.log(thirdFrom(SLL))
+
+    //console.log(middle(SLL))
+
+    console.log(cycle(SLL))
 }
 
-main()
+//main()
 
 
-//4. 
+//4. It appears to be removing duplicates from the linked list. It's time complexity is likely O(n^2) due to the nested while loop
+
+
+//5. 
+
+function reverse(list){
+    let currNode = list.head;
+
+    let previous;
+
+    let tempNode
+
+    while(currNode){
+
+        tempNode = currNode.next
+
+        currNode.next = previous
+
+        previous = currNode;
+
+        currNode = tempNode;
+    }
+
+    return previous
+}
+
+//6. 
+
+function thirdFrom(list){
+
+    let currNode = list.head
+
+    while(currNode !== null){
+        
+        if(currNode.next.next.next === null){
+            return currNode.value
+        }
+
+        else{
+
+            currNode = currNode.next
+
+        }
+    }
+
+}
+
+//7.
+
+function middle(list){
+
+    let currNode = list.head
+
+    let tempNode = list.head
+
+    while(currNode !== null){
+
+        if(currNode.next === null){
+            return tempNode.value
+        }
+
+        tempNode = tempNode.next
+
+        currNode = currNode.next.next
+
+    }
+
+    console.log(tempNode.value)
+
+}
+
+//8.
+
+function makeCycleList(){
+
+    let CycleList = new LinkedList()
+
+    CycleList.insertFirst('a')
+    CycleList.insertLast('b')
+    CycleList.insertLast('a')
+    CycleList.insertLast('c')
+    CycleList.insertLast('d')
+    CycleList.insertLast('e')
+
+    display(CycleList)
+
+    console.log(checkCycle(CycleList))
+
+}
+
+makeCycleList()
+
+function checkCycle(list){
+
+    let currNode = list.head
+
+    let tempNode = list.head
+
+    while(currNode !== null){
+
+        if(currNode.next === null){
+            return false
+        }
+
+        tempNode = tempNode.next
+
+        currNode = currNode.next.next
+
+        // console.log(currNode, tempNode)
+
+        if(currNode.value === tempNode.value){
+            return true;
+        }
+
+    }
+}
+
