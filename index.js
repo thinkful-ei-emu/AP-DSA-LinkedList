@@ -178,12 +178,39 @@ function isEmpty(list){
     }
 }
 
+function findLast(list){
+
+    if(list.head === null){
+        console.log('This list is currently empty');;
+    }
+
+    else{
+        
+        let currNode = list.head
+
+        let lastNode;
+
+        while(currNode){
+
+            if(currNode.next === null){
+                lastNode = currNode
+            }
+
+            currNode = currNode.next
+        }
+
+        console.log(`Last Node: ${lastNode.value}`)
+    }
+
+
+}
+
 function main(){
 
     let SLL = new LinkedList()
 
-    // SLL.insertFirst('Apollo')
-    // SLL.insertLast('Boomer')
+    //SLL.insertFirst('Apollo')
+    //SLL.insertLast('Boomer')
     // SLL.insertLast('Helo')
     // SLL.insertLast('Husker')
     // SLL.insertLast('Starbuck')
@@ -196,9 +223,11 @@ function main(){
 
     display(SLL)
 
-    size(SLL)
+    //size(SLL)
 
-    isEmpty(SLL)
+    //isEmpty(SLL)
+
+    findLast(SLL)
 }
 
 main()
