@@ -77,54 +77,84 @@ class LinkedList {
         previousNode.next = currNode.next;
     }
 
-    insertBefore(item, index){
-
-    }
-
-    insertAfter(item, index){
-
-    }
-
-    insertAt(item, index){
+    insertBefore(item, target){
 
         if (this.head === null) {
             this.insertFirst(item);
         }
 
         else{
+            let currNode = this.head
 
-            let tempNode = new _Node(item)
+            let previous;
+
+            while((currNode !== null) && (currNode.value !== target)){
+                previous = currNode
+                currNode = currNode.next
+            }
+
+            if(currNode === null){
+                console.log(`The target does not exist`)
+                return;
+            }
+
+            let tempNode = previous
+            
+            tempNode.next = new _Node(item, previous.next)
+        }
+
+    }
+
+    insertAfter(item, target){
+
+        if (this.head === null) {
+            this.insertFirst(item);
+          }
+        
+        else{
 
             let currNode = this.head;
 
-            let previousNode;
+            let previous;
 
-            if(index === 0){
-                tempNode.next = this.head
-
-                this.head = tempNode
+            while((currNode !== null) && (currNode.value !== target)){
+                previous = currNode
+                currNode = currNode.next
             }
 
-            else{
-                currNode = this.head;
-
-                let i = 0
-
-                while( i < index){
-
-                    i++
-
-                    previousNode = currNode
-
-                    currNode = currNode.next
-
-                }
-
-                tempNode.next = currNode
-                previousNode = tempNode
+            if(currNode === null){
+                console.log(`The target does not exist`)
+                return;
             }
+
+            let tempNode = currNode
+            tempNode.next = new _Node(item, currNode.next)
+
+        }
+        
+    }
+
+    insertAt(item, index){
+        if(index === 0){
+            this.insertFirst(item);
         }
 
+        else{
+            let currNode = this.head
+
+            for(let i = 0; i < index - 1; i++){
+
+                if(currNode !== null){
+                    currNode = currNode.next
+                }
+
+                else{
+                    console.log('Index does not exist')
+                }
+            }
+
+            currNode.next = new _Node(item, currNode.next)
+        }
     }
 }
 
@@ -242,19 +272,19 @@ function main(){
     SLL.insertLast('Husker')
     SLL.insertLast('Starbuck')
     SLL.insertLast('Tauhida')
-    // SLL.remove('squirrel')
-    //SLL.insertBefore('Athena', 1)
-    //SLL.insertAfter('Hotdog', 3)
-    //SLL.insertAt('Kat', 3)
-    //SLL.remove("Tauhida")
+    SLL.remove('squirrel')
+    SLL.insertBefore('Athena', 'Boomer')
+    SLL.insertAfter('Hotdog', 'Helo')
+    SLL.insertAt('Kat', 3)
+    SLL.remove("Tauhida")
 
     display(SLL)
 
-    //size(SLL)
+    size(SLL)
 
-    //isEmpty(SLL)
+    isEmpty(SLL)
 
-    //findLast(SLL)
+    findLast(SLL)
 
     findPrevious(SLL, 'Husker')
 }
